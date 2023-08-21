@@ -4,14 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import br.com.raulreis.appflix.model.Movie
 
 // Horizontal
-class MovieAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(
+    private val movies: List<Movie>,
+    @LayoutRes private val layoutId: Int
+    ): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
         return MovieViewHolder(view)
     }
 
@@ -27,7 +31,7 @@ class MovieAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MovieA
     inner class MovieViewHolder(itemView: View) :  RecyclerView.ViewHolder(itemView) {
         fun bind (movie: Movie) {
             val imgCover: ImageView = itemView.findViewById(R.id.imgCover)
-            imgCover.setImageResource(movie.converUrl)
+            //imgCover.setImageResource(movie.converUrl)
         }
     }
 }
