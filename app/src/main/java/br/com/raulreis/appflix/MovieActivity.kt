@@ -3,7 +3,6 @@ package br.com.raulreis.appflix
 import android.graphics.drawable.LayerDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
@@ -27,10 +26,6 @@ class MovieActivity : AppCompatActivity() {
         txvCast.text = getString(R.string.cast, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, Nulla nec libero est, Nullam vitae semper odio, Aenean malesuada sed neque non pellentesque, Mauris rhoncus ornare posuere")
 
         val movies = mutableListOf<Movie>()
-        for(i in 0 until 15) {
-            val movie = Movie(R.drawable.movie)
-            movies.add(movie)
-        }
 
         rvSimilar.layoutManager = GridLayoutManager(this@MovieActivity, 3)
         rvSimilar.adapter = MovieAdapter(movies, R.layout.movie_item_similar)
