@@ -1,5 +1,6 @@
 package br.com.raulreis.appflix
 
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,8 @@ import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import br.com.raulreis.appflix.model.Movie
+import br.com.raulreis.appflix.util.DownloadImageTask
+import com.squareup.picasso.Picasso
 
 // Horizontal
 class MovieAdapter(
@@ -31,7 +34,12 @@ class MovieAdapter(
     inner class MovieViewHolder(itemView: View) :  RecyclerView.ViewHolder(itemView) {
         fun bind (movie: Movie) {
             val imgCover: ImageView = itemView.findViewById(R.id.imgCover)
-            //imgCover.setImageResource(movie.converUrl)
+            //Picasso.get().load(movie.coverUrl).into(imgCover)
+            DownloadImageTask(object : DownloadImageTask.Callback {
+                override fun onResult(bitmap: Bitmap) {
+                    imgCover.setImageBitmap(bitmap)
+                }
+            }).execute(movie.coverUrl)
         }
     }
 }

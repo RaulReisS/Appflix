@@ -16,6 +16,7 @@ import android.os.Handler
 class CategoryTask(private val callback: Callback) {
 
     private val handler = Handler(Looper.getMainLooper())
+    private val executor = Executors.newSingleThreadExecutor()
 
     interface  Callback {
         fun onResult(categories: List<Category>)
@@ -26,7 +27,7 @@ class CategoryTask(private val callback: Callback) {
     fun execute(url: String) {
         callback.onPreExecute()
         // Estamos utilizando a UI-thread (1)
-        val executor = Executors.newSingleThreadExecutor()
+
 
         executor.execute {
             var urlConnection: HttpsURLConnection? = null
