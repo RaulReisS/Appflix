@@ -60,7 +60,7 @@ class MovieActivity : AppCompatActivity(), MovieTask.Callback {
         val layerDrawable: LayerDrawable = ContextCompat.getDrawable(this@MovieActivity, R.drawable.shadows) as LayerDrawable
 
         // Busquei a imagem do filme
-        val movieCover = ContextCompat.getDrawable(this, R.drawable.movie4)
+        val movieCover = ContextCompat.getDrawable(this, R.drawable.placehonder_bg)
 
         // Atribuí a esse layer-list a nova imagem do filme
         layerDrawable.setDrawableByLayerId(R.id.coverDrawable, movieCover)
